@@ -10,7 +10,7 @@ const Footer = () => {
     return (
         // Footer links and social media
         <footer className="py-10 sm:py-16 border-t border-blue-50 bg-gray-50">
-            <div className="flex flex-col lg:flex-row items-center justify-between mx-auto max-w-screen-2xl">
+            <div className="flex flex-col lg:flex-row items-center justify-between mx-auto max-w-screen-lg xl:max-w-screen-2xl">
                 <div className="flex items-center">
                     {/* Logo SVG */}
                     <div className="flex items-center ml-4 text-blue-900">
