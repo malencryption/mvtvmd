@@ -14,7 +14,7 @@ import estrella from '../images/estrellatv.jpg'
 import createtv from '../images/create_tv.jpg'
 import bnet from '../images/broadcast_network.jpg'
 
-const Services = () => {
+const Services = (props) => {
     return (
         // Start of Services Section
         <section id="service" className="flex flex-col items-center pt-20 lg:pt-30 pb-10 md:pb-20 bg-gray-50">
@@ -27,9 +27,9 @@ const Services = () => {
                     <FontAwesomeIcon icon={faTv} />
                   </div>
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-700" >Channel List</h3>
-                <p className="text-gray-600 py-4">Click to see a full list of channels</p>
-                <a className="inline-block py-2 px-3 uppercase border border-blue-500 text-blue-500 hover:bg-blue-400 hover:border-blue-400 hover:text-blue-50 focus:ring-2 focus:ring-blue-300" href="">Full Channel List</a>
+                <h3 className="text-2xl font-semibold text-gray-700" >{props.channelListInfo.title}</h3>
+                <p className="text-gray-600 py-4">{props.channelListInfo.description}</p>
+                <a className="inline-block py-2 px-3 uppercase border border-blue-500 text-blue-500 hover:bg-blue-400 hover:border-blue-400 hover:text-blue-50 focus:ring-2 focus:ring-blue-300" href={props.channelListInfo.listFile.mediaItemUrl} target="_blank">{props.channelListInfo.buttonText}</a>
               </div>
 
               <div className="flex flex-wrap max-w-sm lg:max-w-lg md:w-2/5 m-6 md:m-9">
@@ -53,8 +53,8 @@ const Services = () => {
                   <FontAwesomeIcon icon={faSignal} />
                 </div>
               </div>
-              <h3 className="text-2xl font-semibold text-gray-700" >What Do I Need?</h3>
-              <p className="text-gray-600 py-4">To pick up the signal, you will need a digital antenna, coaxial cable to connect to your TV, and the appropriate connectors for your set.</p>
+              <h3 className="text-2xl font-semibold text-gray-700" >{props.serviceInfo.topic1Title}</h3>
+              <p className="text-gray-600 py-4">{props.serviceInfo.topic1Description}</p>
 
             </div>
             <div className="flex flex-col text-center items-center w-72 lg:w-89 m-6 md:m-9 lg:block lg:text-left">
@@ -63,8 +63,8 @@ const Services = () => {
                   <FontAwesomeIcon icon={faBroadcastTower} />
                 </div>
               </div>
-              <h3 className="text-2xl font-semibold text-gray-700">Where Do I Get My Signal From?</h3>
-              <p className="text-gray-600 py-4">All Moapa TV Maintenance District signals originate via providers in Utah or Las Vegas from various TV stations. They are transmitted to residents of Moapa Valley from Beacon Hill.</p>
+              <h3 className="text-2xl font-semibold text-gray-700">{props.serviceInfo.topic2Title}</h3>
+              <p className="text-gray-600 py-4">{props.serviceInfo.topic2Description}</p>
             </div>
             <div className="flex flex-col text-center items-center w-72 lg:w-89 m-6 md:m-9 lg:block lg:text-left">
               <div>
@@ -72,8 +72,8 @@ const Services = () => {
                   <FontAwesomeIcon icon={faCommentDollar} />
                 </div>
               </div>
-              <h3 className="text-2xl font-semibold text-gray-700 capitalize" >Does this cost me anything?</h3>
-              <p className="text-gray-600 py-4">No! Well that's not entirely true. This service is provided through a "Service Charge" of $24 on all real property in the Service Area. NRS 318.201</p>
+              <h3 className="text-2xl font-semibold text-gray-700 capitalize" >{props.serviceInfo.topic3Title}</h3>
+              <p className="text-gray-600 py-4">{props.serviceInfo.topic3Description}</p>
             </div>
           </div>
         </section>

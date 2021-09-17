@@ -12,12 +12,24 @@ import About from "../components/About"
 const Index = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
 
+  // console.log(data);
+
+  const heroTitle = data.allWpPage.edges[0].node.hero?.heroTitle || `Title`;
+  const heroDescription = data.allWpPage.edges[0].node.hero?.heroDescription || `Description`;
+
+  const aboutDescription = data.allWpPage.edges[0].node.aboutUs?.aboutUsDescription || `Description`;
+  const channelListInfo = data.allWpPage.edges[0].node.channelList;
+  const serviceInfo = data.allWpPage.edges[0].node.serviceInfo;
+
+  const boardMembers = data.allWpBoardMember.edges;
+
   return (
     <Layout location={location} title={siteTitle}>
+    {/* <Layout location={location}> */}
       <Seo title="Home" />
-      <Hero />
-      <Services />
-      <About />
+      <Hero heroTitle={heroTitle} heroDescription={heroDescription} />
+      <Services channelListInfo={channelListInfo} serviceInfo={serviceInfo} />
+      <About description={aboutDescription} boardMembers={boardMembers} />
       <MeetingMinutes />
       <Contact />
     </Layout>
@@ -26,23 +38,65 @@ const Index = ({ data, location }) => {
 
 export default Index
 
-export const pageQuery = graphql`
-  query {
+export const query = graphql`
+  query HomePageQuery {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
+    allWpPage {
+      edges {
+        node {
+          id
           title
-          description
+          date
+          hero {
+            heroDescription
+            heroTitle
+          }
+          aboutUs {
+            aboutUsDescription
+          }
+          contactUs {
+            phoneNumber
+            emailAddress
+            mailingAddress
+          }
+          channelList {
+            title
+            description
+            buttonText
+            listFile {
+              mediaItemUrl
+            }
+          }
+          serviceInfo {
+            topic1Title
+            topic1Description
+            topic2Title
+            topic2Description
+            topic3Title
+            topic3Description
+          }
+        }
+      }
+    }
+    allWpBoardMember {
+      edges {
+        node {
+          id
+          title
+          date
+          boardMembers {
+            memberBio
+            memberTitle
+          }
+          featuredImage {
+            node {
+              mediaItemUrl
+            }
+          }
         }
       }
     }
