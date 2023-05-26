@@ -34,7 +34,7 @@ const MemberCard = boardMember => {
 }
 
 const BoardMembers = props => {
-  console.log(props.boardMembers)
+  // console.log(props.boardMembers)
 
   const [currentBoardMemberId, setCurrentMemberId] = React.useState(
     props.boardMembers[0].node.id
@@ -48,22 +48,22 @@ const BoardMembers = props => {
     props.boardMembers[props.boardMembers.length - 1].node.id
   )
 
-  console.log(
-    `currentBoardMemberId, nextBoardMemberId, prevBoardMemberId: ${currentBoardMemberId}, ${nextBoardMemberId}, ${prevBoardMemberId}`
-  )
+  // console.log(
+  //   `currentBoardMemberId, nextBoardMemberId, prevBoardMemberId: ${currentBoardMemberId}, ${nextBoardMemberId}, ${prevBoardMemberId}`
+  // )
 
   const getBoardMember = memberId => {
     return props.boardMembers.filter(member => member.node.id === memberId)
   }
 
   const getNextBoardMemberId = newCurrentMemberId => {
-    console.log("new member id: " + newCurrentMemberId)
+    // console.log("new member id: " + newCurrentMemberId)
     // find the index of the new current member
     const newMemberIndex = props.boardMembers.findIndex(
       member => member.node.id === newCurrentMemberId
     )
 
-    console.log("new member index: " + newMemberIndex)
+    // console.log("new member index: " + newMemberIndex)
     // return next member id
     if (newMemberIndex === props.boardMembers.length - 1) {
       // new member is the last, set next to the first member
@@ -91,14 +91,14 @@ const BoardMembers = props => {
   }
 
   const updateMemberIds = newCurrentMemberId => {
-    console.log(newCurrentMemberId)
+    // console.log(newCurrentMemberId)
     setCurrentMemberId(newCurrentMemberId)
     setNextMemberId(getNextBoardMemberId(newCurrentMemberId))
     setPrevMemberId(getPrevBoardMemberId(newCurrentMemberId))
 
-    console.log(
-      `2: currentBoardMemberId, nextBoardMemberId, prevBoardMemberId: ${currentBoardMemberId}, ${nextBoardMemberId}, ${prevBoardMemberId}`
-    )
+    // console.log(
+    //   `2: currentBoardMemberId, nextBoardMemberId, prevBoardMemberId: ${currentBoardMemberId}, ${nextBoardMemberId}, ${prevBoardMemberId}`
+    // )
   }
 
   const currentBoardMember = getBoardMember(currentBoardMemberId)
@@ -129,13 +129,8 @@ const BoardMembers = props => {
       <h3 className="thick_underline uppercase tracking-wider text-3xl lg:text-4xl text-gray-700">
         Board Members
       </h3>
-      <p className="max-w-prose pt-20 pb-0 px-8 lg:pt-24 lg:px-0 text-gray-700 text-center">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Varius integer
-        odio vulputate ac pharetra eget nascetur. Ac turpis enim condimentum
-        tortor sagittis.
-      </p>
-      <p className="max-w-prose pt-10 pb-0 px-8 lg:pt-12 lg:px-0 text-gray-700 text-center">
-        Click the pictures to learn about our Board Members!
+      <p className="max-w-prose pt-20 pb-0 px-8 lg:pt-24 lg:px-0 text-gray-700 text-center whitespace-pre-wrap">
+        {props.boardMemberDescription}
       </p>
       <div className="flex flex-row items-center align-center py-10">
         <div

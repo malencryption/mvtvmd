@@ -7,7 +7,7 @@ const About = (props) => {
             <h2 className="thick_underline uppercase tracking-wider text-4xl lg:text-5xl text-gray-700">About Us</h2>
             <p className="max-w-prose pt-20 pb-0 px-8 lg:pt-24 lg:px-0 text-gray-700 text-center">{props.description}</p>
 
-            <BoardMembers boardMembers={props.boardMembers} />
+            <BoardMembers boardMembers={props.boardMembers} boardMemberDescription={props.boardMemberDescription} />
         </section>
     )
 }

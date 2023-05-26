@@ -21,6 +21,8 @@ const Index = ({ data, location }) => {
   const channelListInfo = data.allWpPage.edges[0].node.channelList;
   const serviceInfo = data.allWpPage.edges[0].node.serviceInfo;
 
+  const boardMemberDescription = data.allWpPage.edges[0].node.boardMemberSection?.boardMemberDescription || `Description`;
+
   const boardMembers = data.allWpBoardMember.edges;
 
   return (
@@ -29,7 +31,7 @@ const Index = ({ data, location }) => {
       <Seo title="Home" />
       <Hero heroTitle={heroTitle} heroDescription={heroDescription} />
       <Services channelListInfo={channelListInfo} serviceInfo={serviceInfo} />
-      <About description={aboutDescription} boardMembers={boardMembers} />
+      <About description={aboutDescription} boardMembers={boardMembers} boardMemberDescription={boardMemberDescription} />
       <MeetingMinutes />
       <Contact />
     </Layout>
@@ -57,6 +59,9 @@ export const query = graphql`
           }
           aboutUs {
             aboutUsDescription
+          }
+          boardMemberSection {
+            boardMemberDescription
           }
           contactUs {
             phoneNumber
