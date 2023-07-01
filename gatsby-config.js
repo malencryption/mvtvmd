@@ -2,14 +2,11 @@ module.exports = {
   siteMetadata: {
     title: `MVTVMD`,
     author: {
-      name: `Leesa Ruzicka`,
+      name: `Leesa Wangsgard Ruzicka`,
       summary: `helping people to leverage tech to improve their life and business`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
-    social: {
-      twitter: `msmaleesa`,
-    },
+    description: `MVTVMD rebroadcasts digital television signals to the Moapa Valley and Moapa Nevada`,
+    siteUrl: `http://mvtvmd.com/`,
   },
   plugins: [
     `gatsby-plugin-postcss`,
